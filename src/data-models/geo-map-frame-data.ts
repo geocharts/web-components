@@ -1,9 +1,9 @@
-export interface GeoBubbleMapDataFrame {
+export interface GeoMapDataFrame {
   label: string;
-  data: GeoBubbleMapData[];
+  data: GeoMapLocationData[];
 }
 
-export interface GeoBubbleMapData {
+export interface GeoMapLocationData {
   lat: number;
   lng: number;
   value: number;
