@@ -1,13 +1,20 @@
 import {LitElement, html, PropertyValueMap, css} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
-import {select, easeLinear, ScaleLinear, scaleLinear} from 'd3';
+import {
+  select,
+  easeLinear,
+  pack,
+  hierarchy,
+  ScaleLinear,
+  scaleLinear,
+} from 'd3';
 import {map, tileLayer, svg} from 'leaflet/dist/leaflet-src.esm.js';
 import {MAP_SERVER} from '../common/constants';
 import {GeoSymbolMapDataFrame} from '../data-models/geo-symbol-map-data';
 import {GeoMapInfo} from './geo-map-info';
 
-@customElement('geo-symbol-map')
-export class GeoSymbolMap extends LitElement {
+@customElement('geo-pack-symbol-map')
+export class GeoPackSymbolMap extends LitElement {
   static override styles = css`
     .info {
       padding: 10px;
@@ -36,8 +43,11 @@ export class GeoSymbolMap extends LitElement {
   @property({type: Number, attribute: 'frame-rate'})
   frameRate = 1000;
 
-  @property({type: String, attribute: 'symbol-max-size'})
-  symbolMaxSize = 50;
+  @property({type: String, attribute: 'max-symbols'})
+  maxSymbols = 20;
+
+  @property({type: String, attribute: 'pack-radius'})
+  packRadius = 50;
 
   @property({type: String})
   description!: string;
@@ -128,9 +138,8 @@ export class GeoSymbolMap extends LitElement {
         .selectAll('g')
         .data([1])
         .join(
-          (enter) =>
-            enter.append('g').attr('id', (elm) => 'symbol-group' + elm),
-          (update) => update.attr('id', (elm) => 'symbol-group' + elm),
+          (enter) => enter.append('g').attr('id', 'symbol-group'),
+          (update) => update.attr('id', 'symbol-group'),
           (exit) =>
             exit.transition().ease(easeLinear).duration(this.frameRate).remove()
         );
@@ -158,7 +167,7 @@ export class GeoSymbolMap extends LitElement {
           Math.max(...frameObj.data.map((dataObj) => dataObj.value))
         )
       );
-      this._scale = scaleLinear([minValue, maxValue], [0, this.symbolMaxSize]);
+      this._scale = scaleLinear([minValue, maxValue], [0, this.maxSymbols]);
       this._updateSVG();
     }
   }
@@ -170,10 +179,10 @@ export class GeoSymbolMap extends LitElement {
   }
 
   private _updateSVG() {
-    this._updateSVGWithSingleSymbol();
+    this._updateSVGWithMultipleSymbols();
   }
 
-  private _updateSVGWithSingleSymbol() {
+  private _updateSVGWithMultipleSymbols() {
     if (this.data?.length > 0) {
       if (this._frameIndex >= this.data.length) {
         this._frameIndex = 0;
@@ -182,25 +191,77 @@ export class GeoSymbolMap extends LitElement {
       this._frameTicker.update(
         this._getFrameTickerTemplate(geoSymbolMapDataFrame.label)
       );
-      select(this._mapElement)
+
+      const groups = select(this._mapElement)
         .select('svg')
-        .select('g#' + 'symbol-group1')
-        .selectAll('text')
+        .select('g#' + 'symbol-group')
+        .selectAll('g')
         .data(geoSymbolMapDataFrame.data)
         .join(
           (enter) =>
             enter
+              .append('g')
+              .attr('id', (_, i) => 'symbol-group-' + i)
+              .attr(
+                'transform',
+                (d) =>
+                  'translate(' +
+                  this._geoMap.latLngToLayerPoint([d.lat, d.lng]).x +
+                  ',' +
+                  this._geoMap.latLngToLayerPoint([d.lat, d.lng]).y +
+                  ')'
+              ),
+          (update) =>
+            update
+              .transition()
+              .ease(easeLinear)
+              .duration(this.frameRate)
+              .attr(
+                'transform',
+                (d) =>
+                  'translate(' +
+                  this._geoMap.latLngToLayerPoint([d.lat, d.lng]).x +
+                  ',' +
+                  this._geoMap.latLngToLayerPoint([d.lat, d.lng]).y +
+                  ')'
+              ),
+          (exit) => exit
+        );
+
+      groups
+        .selectAll('text.emoji')
+        .data((d) => {
+          const dataObj: any = {
+            children: Array(Math.round(this._scale(d.value)))
+              .fill('')
+              .map((_) => ({value: 1})),
+          };
+          const pack1 = pack()
+            .size([this.packRadius, this.packRadius])
+            .padding(1);
+          const nodes1 = pack1(hierarchy(dataObj).sum((d) => d.value));
+          return nodes1.descendants();
+        })
+        .join(
+          (enter: any) =>
+            enter
               .append('text')
+              .attr('class', 'emoji')
+              .style('font-size', '0px')
+              .attr('x', 0)
+              .attr('y', 0)
+              .transition()
+              .duration(this.frameRate)
               .attr(
                 'x',
-                (d) => this._geoMap.latLngToLayerPoint([d.lat, d.lng]).x
+                (d) => d.x - this.packRadius / 2 + (Math.random() * 20 - 10)
               )
               .attr(
                 'y',
-                (d) => this._geoMap.latLngToLayerPoint([d.lat, d.lng]).y
+                (d) => d.y - this.packRadius / 2 + (Math.random() * 20 - 10)
               )
               .text(this.content)
-              .style('font-size', (d) => this._scale(d.value) + 'px'),
+              .style('font-size', this.packRadius * 0.3 + 'px'),
           (update) =>
             update
               .transition()
@@ -208,16 +269,22 @@ export class GeoSymbolMap extends LitElement {
               .duration(this.frameRate)
               .attr(
                 'x',
-                (d) => this._geoMap.latLngToLayerPoint([d.lat, d.lng]).x
+                (d) => d.x - this.packRadius / 2 + (Math.random() * 20 - 10)
               )
               .attr(
                 'y',
-                (d) => this._geoMap.latLngToLayerPoint([d.lat, d.lng]).y
+                (d) => d.y - this.packRadius / 2 + (Math.random() * 20 - 10)
               )
-              .text(this.content)
-              .style('font-size', (d) => this._scale(d.value) + 'px'),
+              .style('font-size', this.packRadius * 0.3 + 'px')
+              .text(this.content),
           (exit) =>
-            exit.transition().ease(easeLinear).duration(this.frameRate).remove()
+            exit
+              .transition()
+              .ease(easeLinear)
+              .duration(this.frameRate)
+              .attr('x', 0)
+              .attr('y', 0)
+              .remove()
         );
     }
   }
@@ -236,6 +303,6 @@ export class GeoSymbolMap extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'geo-symbol-map': GeoSymbolMap;
+    'geo-pack-symbol-map': GeoPackSymbolMap;
   }
 }

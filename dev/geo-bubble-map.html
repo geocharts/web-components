@@ -18,13 +18,12 @@
   <body onload="onPageLoad();">
     <div style="width: 100%; height: 800px">
       <geo-bubble-map
-        lat-lng-center="[39.8283,-98.5795]"
-        zoom="5"
-        frame-rate="500"
+        lat-lng-bounds="[[49.3845, -124.7329],[24.5208, -66.947]]"
+        frame-rate="2000"
+        bubble-max-size="4"
         color-scheme="red"
         bubble-stroke="#3B5998"
-        description="USA Flue trend data from 2004-2016"
-        bubble-max-size="100"
+        map-title="USA Flue trend data from 2004-2016"
         id="geo-bubble-map"
       ></geo-bubble-map>
     </div>

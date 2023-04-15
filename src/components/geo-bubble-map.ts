@@ -3,7 +3,7 @@ import {customElement, property, query} from 'lit/decorators.js';
 import {select, easeLinear, ScaleLinear, scaleLinear} from 'd3';
 import {map, tileLayer, svg} from 'leaflet/dist/leaflet-src.esm.js';
 import {MAP_SERVER} from '../common/constants';
-import {SequentialColor} from '../common/sequential-color';
+import {SequentialGeoMapColor} from '../common/sequential-color';
 import {GeoBubbleMapDataFrame} from '../data-models/geo-bubble-map-data';
 import {GeoMapInfo} from './geo-map-info';
 
@@ -12,14 +12,14 @@ export class GeoBubbleMap extends LitElement {
   static override styles = css`
     .info {
       padding: 10px;
-      font-size: 40px;
+      font-size: 30px;
       font-family: Arial, Helvetica, sans-serif;
       background: rgba(255, 255, 255, 0.9);
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
       border-radius: 15px;
     }
     .description {
-      font-size: 20px;
+      font-size: 15px;
       padding: 5px;
       font-family: Arial, Helvetica, sans-serif;
       background: rgba(255, 255, 255, 0.9);
@@ -28,17 +28,17 @@ export class GeoBubbleMap extends LitElement {
     }
   `;
 
-  @property({type: Array, attribute: 'lat-lng-center'})
-  latLngCenter = [0, 0];
-
-  @property({type: Number})
-  zoom = 5;
+  @property({type: Array, attribute: 'lat-lng-bounds'})
+  latLngBounds = [
+    [79.6240562918881, -332.57812500000006],
+    [-79.99716840285254, 332.22656250000006],
+  ];
 
   @property({type: Number, attribute: 'frame-rate'})
   frameRate = 1000;
 
   @property({type: String, attribute: 'bubble-max-size'})
-  bubbleMaxSize = 50;
+  bubbleMaxSize = 3;
 
   @property({type: String, attribute: 'color-scheme'})
   colorScheme = 'red';
@@ -46,14 +46,14 @@ export class GeoBubbleMap extends LitElement {
   @property({type: String, attribute: 'bubble-stroke'})
   bubbleStroke = '#3B5998';
 
-  @property({type: String})
-  description!: string;
+  @property({type: String, attribute: 'map-title'})
+  mapTitle = '';
 
-  @property({type: String, attribute: 'description-location'})
-  descriptionLocation = 'topright';
+  @property({type: String, attribute: 'title-loc'})
+  titleLoc = 'topright';
 
-  @property({type: String, attribute: 'frame-ticker-location'})
-  frameTickerLocation = 'topright';
+  @property({type: String, attribute: 'ticker-loc'})
+  tickerLoc = 'topright';
 
   @property({
     attribute: false,
@@ -65,12 +65,14 @@ export class GeoBubbleMap extends LitElement {
 
   @query('#geo-bubble-map')
   private _mapElement!: HTMLElement;
+
   private _geoMap: any;
   private _frameIndex = 0;
   private _timerInterval!: ReturnType<typeof setInterval>;
   private _scale!: ScaleLinear<number, number, never>;
-  private _colorScale = new SequentialColor(this.colorScheme, []);
+  private _colorScale = new SequentialGeoMapColor(this.colorScheme, []);
   private _frameTicker!: GeoMapInfo;
+  private _domRect!: DOMRect;
 
   override firstUpdated(
     _changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
@@ -78,18 +80,8 @@ export class GeoBubbleMap extends LitElement {
     super.firstUpdated(_changedProperties);
     this._createMap();
     this._createSVGElements();
+    this._showMapInfo();
     this._startFrames();
-
-    new GeoMapInfo(
-      this._geoMap,
-      this.descriptionLocation,
-      `<div class="description">${this.description}</div>`
-    );
-    this._frameTicker = new GeoMapInfo(
-      this._geoMap,
-      this.frameTickerLocation,
-      ''
-    );
   }
 
   override attributeChangedCallback(
@@ -114,10 +106,15 @@ export class GeoBubbleMap extends LitElement {
   }
 
   private _createMap() {
-    this._geoMap = map(this._mapElement, {attributionControl: false}).setView(
-      this.latLngCenter,
-      this.zoom
-    );
+    this._geoMap = map(this._mapElement, {
+      attributionControl: false,
+      zoomControl: false,
+      scrollWheelZoom: false,
+      dragging: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      touchZoom: false,
+    }).fitBounds(this.latLngBounds);
     tileLayer(MAP_SERVER).addTo(this._geoMap);
 
     this._geoMap.on('moveend', () => {
@@ -136,7 +133,8 @@ export class GeoBubbleMap extends LitElement {
           (enter) =>
             enter.append('g').attr('id', (elm) => 'bubble-group' + elm),
           (update) => update.attr('id', (elm) => 'bubble-group' + elm),
-          (exit) => exit
+          (exit) =>
+            exit.transition().ease(easeLinear).duration(this.frameRate).remove()
         );
     }
   }
@@ -149,6 +147,7 @@ export class GeoBubbleMap extends LitElement {
   }
 
   private _inputChanged() {
+    this._domRect = this.getBoundingClientRect();
     if (this.data?.length > 0) {
       this._frameIndex = 0;
       const minValue = Math.min(
@@ -162,7 +161,15 @@ export class GeoBubbleMap extends LitElement {
           Math.max(...frameObj.data.map((dataObj) => dataObj.value))
         )
       );
-      this._scale = scaleLinear([minValue, maxValue], [0, this.bubbleMaxSize]);
+
+      console.log(
+        '(this.bubbleMaxSize / 100) * this._domRect.width =',
+        (this.bubbleMaxSize / 100) * this._domRect.width
+      );
+      this._scale = scaleLinear(
+        [minValue, maxValue],
+        [0, (this.bubbleMaxSize / 100) * this._domRect.width]
+      );
       this._colorScale.update(this.colorScheme, [minValue, maxValue]);
       this._updateSVG();
     }
@@ -172,6 +179,15 @@ export class GeoBubbleMap extends LitElement {
     return `<div>
         <div class="info">${frameTitle}</div>
       </div>`;
+  }
+
+  private _showMapInfo() {
+    new GeoMapInfo(
+      this._geoMap,
+      this.titleLoc,
+      `<div class="description">${this.mapTitle}</div>`
+    );
+    this._frameTicker = new GeoMapInfo(this._geoMap, this.tickerLoc, '');
   }
 
   private _updateSVG() {
@@ -221,7 +237,8 @@ export class GeoBubbleMap extends LitElement {
               .style('fill', (d) => d.color || this._colorScale.get(d.value))
               .attr('stroke', this.bubbleStroke)
               .attr('fill-opacity', 0.6),
-          (exit) => exit
+          (exit) =>
+            exit.transition().ease(easeLinear).duration(this.frameRate).remove()
         );
     }
   }

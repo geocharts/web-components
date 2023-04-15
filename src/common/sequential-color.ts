@@ -81,7 +81,7 @@ const SCHEMA_MAP = {
   interpolateSinebow: interpolateSinebow,
 };
 
-export class SequentialColor {
+export class SequentialGeoMapColor {
   private _colorScale!: any;
   private _colorVal!: string;
 
