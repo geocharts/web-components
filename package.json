@@ -1,5 +1,5 @@
 {
-  "name": "@lit/lit-starter-ts",
+  "name": "@geocharts/geo-charts",
   "private": true,
   "version": "1.0.5",
   "description": "A simple web component",

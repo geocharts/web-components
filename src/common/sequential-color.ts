@@ -40,7 +40,7 @@ import {
   scaleSequential,
 } from 'd3';
 
-const SCHEMA_MAP = {
+const SCHEMAS = {
   interpolateBrBG: interpolateBrBG,
   interpolatePRGn: interpolatePRGn,
   interpolatePiYG: interpolatePiYG,
@@ -81,7 +81,7 @@ const SCHEMA_MAP = {
   interpolateSinebow: interpolateSinebow,
 };
 
-export class SequentialGeoMapColor {
+export class SequentialGeoChartColor {
   private _colorScale!: any;
   private _colorVal!: string;
 
@@ -90,7 +90,7 @@ export class SequentialGeoMapColor {
   }
 
   update(schema: string, domain: number[]) {
-    const schemaFn = SCHEMA_MAP[schema];
+    const schemaFn = SCHEMAS[schema];
     if (schemaFn) {
       this._colorScale = scaleSequential()
         .interpolator(schemaFn)

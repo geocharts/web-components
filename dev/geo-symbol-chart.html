@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Geo Symbol Chart</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/lit/polyfill-support.js"></script>
+    <script type="module" src="../dist/components/geo-symbol-chart.js"></script>
+    <script>
+      async function onPageLoad() {
+        const response = await fetch('./data/usa-flu.json');
+        const jsonData = await response.json();
+        document.getElementById('geo-symbol-chart').data = jsonData;
+      }
+    </script>
+  </head>
+  <body onload="onPageLoad();">
+    <div style="width: 100%; height: 800px">
+      <geo-symbol-chart
+        lat-lng-bounds="[[49.3845, -124.7329],[24.5208, -66.947]]"
+        frame-rate="1000"
+        max-size="4"
+        chart-title="USA Flue trend data from 2004-2016"
+        content="🦠"
+        id="geo-symbol-chart"
+      ></geo-symbol-chart>
+    </div>
+  </body>
+</html>

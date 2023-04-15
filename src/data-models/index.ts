@@ -1,1 +1,1 @@
-export {GeoMapDataFrame, GeoMapLocationData} from './geo-map-frame-data';
+export {GeoChartDataFrame, GeoChartLocationData} from './geo-chart-frame-data';

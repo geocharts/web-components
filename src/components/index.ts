@@ -1,3 +1,3 @@
-export {GeoSymbolMap} from './geo-symbol-map';
-export {GeoSymbolPackMap} from './geo-symbol-pack-map';
-export {GeoBubbleMap} from './geo-bubble-map';
+export {GeoSymbolChart} from './geo-symbol-chart';
+export {GeoSymbolPackChart} from './geo-symbol-pack-chart';
+export {GeoBubbleChart} from './geo-bubble-chart';
