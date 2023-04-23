@@ -34,8 +34,7 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.json"
+    "src/**/*.ts"
   ],
   "exclude": []
 }

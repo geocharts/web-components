@@ -132,3 +132,8 @@ For information on building application projects that include LitElement compone
 ## More information
 
 See [Get started](https://lit.dev/docs/getting-started/) on the Lit site for more information.
+
+
+```bash
+npm pack
+```

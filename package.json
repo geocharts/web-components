@@ -1,12 +1,12 @@
 {
   "name": "@geocharts/geo-charts",
-  "private": true,
+  "private": false,
   "version": "1.0.5",
   "description": "A simple web component",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "type": "module",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc",
     "build:watch": "npm run clean && tsc --watch",
@@ -78,5 +78,8 @@
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "~4.7.4"
   },
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "files": [
+    "dist/"
+  ]
 }
