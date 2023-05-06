@@ -1,0 +1,681 @@
+[
+  {
+    "lat": "61.218056",
+    "lng": "-149.9002806",
+    "value": "",
+    "text": "Anchorage, AK",
+    "color": ""
+  },
+  {
+    "lat": "33.5206824",
+    "lng": "-86.8024326",
+    "value": "407",
+    "text": "Birmingham, AL",
+    "color": ""
+  },
+  {
+    "lat": "34.7464809",
+    "lng": "-92.2895948",
+    "value": "",
+    "text": "Little Rock, AR",
+    "color": ""
+  },
+  {
+    "lat": "33.4153143",
+    "lng": "-111.8312641",
+    "value": "",
+    "text": "Mesa, AZ",
+    "color": ""
+  },
+  {
+    "lat": "33.4467681",
+    "lng": "-112.0756724",
+    "value": "757",
+    "text": "Phoenix, AZ",
+    "color": ""
+  },
+  {
+    "lat": "33.5091215",
+    "lng": "-111.8992365",
+    "value": "",
+    "text": "Scottsdale, AZ",
+    "color": ""
+  },
+  {
+    "lat": "33.4144139",
+    "lng": "-111.9094458",
+    "value": "585",
+    "text": "Tempe, AZ",
+    "color": ""
+  },
+  {
+    "lat": "32.2217422",
+    "lng": "-110.9264759",
+    "value": "598",
+    "text": "Tucson, AZ",
+    "color": ""
+  },
+  {
+    "lat": "37.8708393",
+    "lng": "-122.2728639",
+    "value": "",
+    "text": "Berkeley, CA",
+    "color": ""
+  },
+  {
+    "lat": "36.7295295",
+    "lng": "-119.7088612",
+    "value": "",
+    "text": "Fresno, CA",
+    "color": ""
+  },
+  {
+    "lat": "33.6856969",
+    "lng": "-117.8259819",
+    "value": "",
+    "text": "Irvine, CA",
+    "color": ""
+  },
+  {
+    "lat": "34.053717",
+    "lng": "-118.2427266",
+    "value": "901",
+    "text": "Los Angeles, CA",
+    "color": ""
+  },
+  {
+    "lat": "37.8044557",
+    "lng": "-122.2713563",
+    "value": "848",
+    "text": "Oakland, CA",
+    "color": ""
+  },
+  {
+    "lat": "38.5815719",
+    "lng": "-121.4943996",
+    "value": "448",
+    "text": "Sacramento, CA",
+    "color": ""
+  },
+  {
+    "lat": "32.7174209",
+    "lng": "-117.1627714",
+    "value": "562",
+    "text": "San Diego, CA",
+    "color": ""
+  },
+  {
+    "lat": "37.7792768",
+    "lng": "-122.4192704",
+    "value": "1003",
+    "text": "San Francisco, CA",
+    "color": ""
+  },
+  {
+    "lat": "37.3438502",
+    "lng": "-121.8831349",
+    "value": "731",
+    "text": "San Jose, CA",
+    "color": ""
+  },
+  {
+    "lat": "37.3541132",
+    "lng": "-121.9551744",
+    "value": "990",
+    "text": "Santa Clara, CA",
+    "color": ""
+  },
+  {
+    "lat": "37.3688301",
+    "lng": "-122.0363496",
+    "value": "602",
+    "text": "Sunnyvale, CA",
+    "color": ""
+  },
+  {
+    "lat": "38.8339578",
+    "lng": "-104.8253485",
+    "value": "",
+    "text": "Colorado Springs, CO",
+    "color": ""
+  },
+  {
+    "lat": "39.7391536",
+    "lng": "-104.9847034",
+    "value": "235",
+    "text": "Denver, CO",
+    "color": ""
+  },
+  {
+    "lat": "38.8949549",
+    "lng": "-77.0366456",
+    "value": "1153",
+    "text": "Washington, DC",
+    "color": ""
+  },
+  {
+    "lat": "29.651907",
+    "lng": "-82.3247976",
+    "value": "",
+    "text": "Gainesville, FL",
+    "color": ""
+  },
+  {
+    "lat": "30.3321838",
+    "lng": "-81.655651",
+    "value": "",
+    "text": "Jacksonville, FL",
+    "color": ""
+  },
+  {
+    "lat": "25.7742658",
+    "lng": "-80.1936589",
+    "value": "373",
+    "text": "Miami, FL",
+    "color": ""
+  },
+  {
+    "lat": "28.5421175",
+    "lng": "-81.3790462",
+    "value": "609",
+    "text": "Orlando, FL",
+    "color": ""
+  },
+  {
+    "lat": "27.9477595",
+    "lng": "-82.458444",
+    "value": "461",
+    "text": "Tampa, FL",
+    "color": ""
+  },
+  {
+    "lat": "33.7490987",
+    "lng": "-84.3901849",
+    "value": "519",
+    "text": "Atlanta, GA",
+    "color": ""
+  },
+  {
+    "lat": "34.02332",
+    "lng": "-84.360022",
+    "value": "",
+    "text": "Roswell, GA",
+    "color": ""
+  },
+  {
+    "lat": "21.304547",
+    "lng": "-157.8556764",
+    "value": "794",
+    "text": "Honolulu, HI",
+    "color": ""
+  },
+  {
+    "lat": "41.5910641",
+    "lng": "-93.6037149",
+    "value": "",
+    "text": "Des Moines, IA",
+    "color": ""
+  },
+  {
+    "lat": "43.615046",
+    "lng": "-116.2044429",
+    "value": "",
+    "text": "Boise, ID",
+    "color": ""
+  },
+  {
+    "lat": "41.8755546",
+    "lng": "-87.6244212",
+    "value": "731",
+    "text": "Chicago, IL",
+    "color": ""
+  },
+  {
+    "lat": "39.7683795",
+    "lng": "-86.1580447",
+    "value": "641",
+    "text": "Indianapolis, IN",
+    "color": ""
+  },
+  {
+    "lat": "37.6922361",
+    "lng": "-97.3375448",
+    "value": "",
+    "text": "Wichita, KS",
+    "color": ""
+  },
+  {
+    "lat": "38.0464066",
+    "lng": "-84.4970393",
+    "value": "",
+    "text": "Lexington, KY",
+    "color": ""
+  },
+  {
+    "lat": "30.4507462",
+    "lng": "-91.154551",
+    "value": "",
+    "text": "Baton Rouge, LA",
+    "color": ""
+  },
+  {
+    "lat": "29.9499323",
+    "lng": "-90.0701156",
+    "value": "1154",
+    "text": "New Orleans, LA",
+    "color": ""
+  },
+  {
+    "lat": "42.3604823",
+    "lng": "-71.0595678",
+    "value": "314",
+    "text": "Boston, MA",
+    "color": ""
+  },
+  {
+    "lat": "42.3875968",
+    "lng": "-71.0994968",
+    "value": "332",
+    "text": "Somerville, MA",
+    "color": ""
+  },
+  {
+    "lat": "39.2908608",
+    "lng": "-76.6108073",
+    "value": "1505",
+    "text": "Baltimore, MD",
+    "color": ""
+  },
+  {
+    "lat": "42.9632405",
+    "lng": "-85.6678639",
+    "value": "",
+    "text": "Grand Rapids, MI",
+    "color": ""
+  },
+  {
+    "lat": "44.9504037",
+    "lng": "-93.1015026",
+    "value": "426",
+    "text": "St Paul, MN",
+    "color": ""
+  },
+  {
+    "lat": "39.0844687",
+    "lng": "-94.5630298",
+    "value": "330",
+    "text": "Kansas City, MO",
+    "color": ""
+  },
+  {
+    "lat": "37.2153307",
+    "lng": "-93.2982521",
+    "value": "",
+    "text": "Springfield, MO",
+    "color": ""
+  },
+  {
+    "lat": "38.6272733",
+    "lng": "-90.1978889",
+    "value": "391",
+    "text": "St Louis, MO",
+    "color": ""
+  },
+  {
+    "lat": "32.4104385",
+    "lng": "-90.16206489",
+    "value": "",
+    "text": "Jackson, MS",
+    "color": ""
+  },
+  {
+    "lat": "35.7882973",
+    "lng": "-78.7811925",
+    "value": "",
+    "text": "Cary, NC",
+    "color": ""
+  },
+  {
+    "lat": "35.2270869",
+    "lng": "-80.8431268",
+    "value": "561",
+    "text": "Charlotte, NC",
+    "color": ""
+  },
+  {
+    "lat": "35.9940329",
+    "lng": "-78.898619",
+    "value": "521",
+    "text": "Durham, NC",
+    "color": ""
+  },
+  {
+    "lat": "36.0726355",
+    "lng": "-79.7919754",
+    "value": "",
+    "text": "Greensboro, NC",
+    "color": ""
+  },
+  {
+    "lat": "35.7804015",
+    "lng": "-78.6390779",
+    "value": "503",
+    "text": "Raleigh, NC",
+    "color": ""
+  },
+  {
+    "lat": "40.8000554",
+    "lng": "-96.6674005",
+    "value": "",
+    "text": "Lincoln, NE",
+    "color": ""
+  },
+  {
+    "lat": "41.2587317",
+    "lng": "-95.9378732",
+    "value": "314",
+    "text": "Omaha, NE",
+    "color": ""
+  },
+  {
+    "lat": "40.735657",
+    "lng": "-74.1723667",
+    "value": "540",
+    "text": "Newark, NJ",
+    "color": ""
+  },
+  {
+    "lat": "35.0841034",
+    "lng": "-106.6509851",
+    "value": "",
+    "text": "Albuquerque, NM",
+    "color": ""
+  },
+  {
+    "lat": "36.1662859",
+    "lng": "-115.149225",
+    "value": "843",
+    "text": "Las Vegas, NV",
+    "color": ""
+  },
+  {
+    "lat": "39.52927",
+    "lng": "-119.8136744",
+    "value": "",
+    "text": "Reno, NV",
+    "color": ""
+  },
+  {
+    "lat": "42.6511674",
+    "lng": "-73.754968",
+    "value": "505",
+    "text": "Albany, NY",
+    "color": ""
+  },
+  {
+    "lat": "42.8864468",
+    "lng": "-78.8783689",
+    "value": "",
+    "text": "Buffalo, NY",
+    "color": ""
+  },
+  {
+    "lat": "40.7305991",
+    "lng": "-73.9865812",
+    "value": "579",
+    "text": "New York, NY",
+    "color": ""
+  },
+  {
+    "lat": "43.1854754",
+    "lng": "-77.610686",
+    "value": "406",
+    "text": "Rochester, NY",
+    "color": ""
+  },
+  {
+    "lat": "41.5051613",
+    "lng": "-81.6934446",
+    "value": "466",
+    "text": "Cleveland, OH",
+    "color": ""
+  },
+  {
+    "lat": "39.9622601",
+    "lng": "-83.0007065",
+    "value": "437",
+    "text": "Columbus, OH",
+    "color": ""
+  },
+  {
+    "lat": "39.7589478",
+    "lng": "-84.1916069",
+    "value": "",
+    "text": "Dayton, OH",
+    "color": ""
+  },
+  {
+    "lat": "35.4729886",
+    "lng": "-97.5170536",
+    "value": "924",
+    "text": "Oklahoma City, OK",
+    "color": ""
+  },
+  {
+    "lat": "36.1556805",
+    "lng": "-95.9929113",
+    "value": "1034",
+    "text": "Tulsa, OK",
+    "color": ""
+  },
+  {
+    "lat": "45.4871723",
+    "lng": "-122.8037804",
+    "value": "",
+    "text": "Beaverton, OR",
+    "color": ""
+  },
+  {
+    "lat": "44.0505054",
+    "lng": "-123.0950506",
+    "value": "",
+    "text": "Eugene, OR",
+    "color": ""
+  },
+  {
+    "lat": "45.5202471",
+    "lng": "-122.6741949",
+    "value": "444",
+    "text": "Portland, OR",
+    "color": ""
+  },
+  {
+    "lat": "39.952335",
+    "lng": "-75.163789",
+    "value": "1204",
+    "text": "Philadelphia, PA",
+    "color": ""
+  },
+  {
+    "lat": "40.4416941",
+    "lng": "-79.9900861",
+    "value": "1122",
+    "text": "Pittsburgh, PA",
+    "color": ""
+  },
+  {
+    "lat": "40.794026",
+    "lng": "-77.8606975",
+    "value": "",
+    "text": "State College, PA",
+    "color": ""
+  },
+  {
+    "lat": "41.8239891",
+    "lng": "-71.4128343",
+    "value": "",
+    "text": "Providence, RI",
+    "color": ""
+  },
+  {
+    "lat": "34.0007493",
+    "lng": "-81.0343313",
+    "value": "",
+    "text": "Columbia, SC",
+    "color": ""
+  },
+  {
+    "lat": "34.851354",
+    "lng": "-82.3984882",
+    "value": "",
+    "text": "Greenville, SC",
+    "color": ""
+  },
+  {
+    "lat": "35.9603948",
+    "lng": "-83.9210261",
+    "value": "",
+    "text": "Knoxville, TN",
+    "color": ""
+  },
+  {
+    "lat": "35.1490215",
+    "lng": "-90.0516285",
+    "value": "",
+    "text": "Memphis, TN",
+    "color": ""
+  },
+  {
+    "lat": "36.1622257",
+    "lng": "-86.7743419",
+    "value": "425",
+    "text": "Nashville, TN",
+    "color": ""
+  },
+  {
+    "lat": "30.2711286",
+    "lng": "-97.7436995",
+    "value": "1150",
+    "text": "Austin, TX",
+    "color": ""
+  },
+  {
+    "lat": "32.7761963",
+    "lng": "-96.7968994",
+    "value": "1200",
+    "text": "Dallas, TX",
+    "color": ""
+  },
+  {
+    "lat": "32.753177",
+    "lng": "-97.3327459",
+    "value": "",
+    "text": "Ft Worth, TX",
+    "color": ""
+  },
+  {
+    "lat": "29.951919",
+    "lng": "-95.54091433",
+    "value": "1412",
+    "text": "Houston, TX",
+    "color": ""
+  },
+  {
+    "lat": "32.8629195",
+    "lng": "-96.97917017",
+    "value": "1122",
+    "text": "Irving, TX",
+    "color": ""
+  },
+  {
+    "lat": "33.5778631",
+    "lng": "-101.8551665",
+    "value": "",
+    "text": "Lubbock, TX",
+    "color": ""
+  },
+  {
+    "lat": "33.0136764",
+    "lng": "-96.6925096",
+    "value": "",
+    "text": "Plano, TX",
+    "color": ""
+  },
+  {
+    "lat": "29.4246002",
+    "lng": "-98.4951405",
+    "value": "986",
+    "text": "San Antonio, TX",
+    "color": ""
+  },
+  {
+    "lat": "40.7670126",
+    "lng": "-111.8904308",
+    "value": "261",
+    "text": "Salt Lake City, UT",
+    "color": ""
+  },
+  {
+    "lat": "38.8903961",
+    "lng": "-77.0841585",
+    "value": "1066",
+    "text": "Arlington, VA",
+    "color": ""
+  },
+  {
+    "lat": "36.9306505",
+    "lng": "-76.25731107",
+    "value": "948",
+    "text": "Norfolk, VA",
+    "color": ""
+  },
+  {
+    "lat": "38.9312353",
+    "lng": "-77.35702091",
+    "value": "",
+    "text": "Reston, VA",
+    "color": ""
+  },
+  {
+    "lat": "37.5385087",
+    "lng": "-77.43428",
+    "value": "1035",
+    "text": "Richmond, VA",
+    "color": ""
+  },
+  {
+    "lat": "47.6144219",
+    "lng": "-122.1923372",
+    "value": "",
+    "text": "Bellevue, WA",
+    "color": ""
+  },
+  {
+    "lat": "47.6038321",
+    "lng": "-122.3300624",
+    "value": "668",
+    "text": "Seattle, WA",
+    "color": ""
+  },
+  {
+    "lat": "47.6588603",
+    "lng": "-117.4247134",
+    "value": "",
+    "text": "Spokane, WA",
+    "color": ""
+  },
+  {
+    "lat": "43.074761",
+    "lng": "-89.3837613",
+    "value": "622",
+    "text": "Madison, WI",
+    "color": ""
+  },
+  {
+    "lat": "43.0349931",
+    "lng": "-87.922497",
+    "value": "452",
+    "text": "Milwaukee, WI",
+    "color": ""
+  }
+]

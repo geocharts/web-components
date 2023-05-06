@@ -1,7 +1,7 @@
 {
   "name": "@geocharts/geo-charts",
   "private": false,
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "A simple web component",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -12,8 +12,8 @@
     "build:watch": "npm run clean && tsc --watch",
     "clean": "rimraf ./dist",
     "serve": "wds --watch",
-    "release": "npm-run-all build",
-    "publish": "npm publish --access public",
+    "release": "npm-run-all build publish-to-npm",
+    "publish-to-npm": "npm publish --access public",
     "ncu": "npx npm-check-updates",
     "ncu:update": "npx npm-check-updates -u && npm install",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
@@ -50,6 +50,9 @@
     "leaflet": "^1.9.3",
     "lit": "^2.2.4",
     "topojson-client": "^3.1.0"
+  },
+  "peerDependencies": {
+    "@types/d3": "^7.4.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
