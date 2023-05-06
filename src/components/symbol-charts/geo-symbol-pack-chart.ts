@@ -76,9 +76,9 @@ export class GeoSymbolChart extends BaseGeoSymbolChart {
             enter
               .append('text')
               .attr('class', 'value')
-              .attr('dy', -this.symbolFontSize + 'px')
+              .attr('dy', -this.symbolFontSize * 0.8 + 'px')
               .text((d) => d.value || 0)
-              .attr('font-weight', 600)
+              .attr('font-weight', 'bold')
               .style('font-size', this.valueFontSize + 'px'),
           (update) => update.text((d) => d.value || 0),
           (exit) => exit.remove()
@@ -89,6 +89,6 @@ export class GeoSymbolChart extends BaseGeoSymbolChart {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'geo-symbol-chart': GeoSymbolChart;
+    'geo-symbol-pack-chart': GeoSymbolChart;
   }
 }
