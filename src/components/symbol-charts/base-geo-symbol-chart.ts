@@ -5,6 +5,7 @@ import {select} from 'd3';
 import {mapCss} from '../../common/css';
 import {MAP_SERVER} from '../../common/constants';
 import {GeoSymbolChartData} from './geo-symbol-chart-data';
+import {ToolTipType} from '../../common/tool-tip-type';
 
 const SVG_GROUP_ID = 'group';
 
@@ -19,6 +20,12 @@ export abstract class BaseGeoSymbolChart extends LitElement {
     type: String,
   })
   symbol = '📍';
+
+  @property({
+    type: String,
+    attribute: 'tool-tip-type',
+  })
+  toolTipType = ToolTipType.mouseover;
 
   @property({
     type: Array,
@@ -39,7 +46,6 @@ export abstract class BaseGeoSymbolChart extends LitElement {
     this._addMap();
     this._addSVGElements();
     this._addToolTip();
-    this.init();
   }
 
   override updated(changedProperties: Map<string, any>) {
@@ -115,5 +121,4 @@ export abstract class BaseGeoSymbolChart extends LitElement {
   }
 
   protected abstract updateSVG(data: GeoSymbolChartData[]);
-  protected abstract init();
 }
