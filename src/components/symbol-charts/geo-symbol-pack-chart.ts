@@ -65,7 +65,6 @@ export class GeoSymbolPackChart extends BaseGeoSymbolChart {
             .attr('y', (d) => d.y)
             .style('font-size', this.symbolFontSize + 'px')
             .attr('pointer-events', 'visible');
-
           if (
             this.toolTipType === ToolTipType.mouseover ||
             this.toolTipType === ToolTipType.touchstart

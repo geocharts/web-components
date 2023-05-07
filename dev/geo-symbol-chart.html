@@ -16,6 +16,10 @@
         const jsonData = await response.json();
         document.getElementById('geo-symbol-chart').data = jsonData;
       }
+
+      window.addEventListener('geo-symbol-chart-click', (event) =>
+        console.log('geo-symbol-chart-click =', event)
+      );
     </script>
   </head>
   <body onload="onPageLoad();">

@@ -99,6 +99,20 @@ export abstract class BaseGeoSymbolChart extends LitElement {
     this._geoMap.on('moveend', () => {
       this._updateSVG();
     });
+
+    this._geoMap.on('click', (event) => {
+      const options = {
+        detail: event,
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      };
+      this.dispatchEvent(new CustomEvent('geo-symbol-chart-click', options));
+
+      if (event.defaultPrevented) {
+        event.preventDefault();
+      }
+    });
   }
   private _updateSVG() {
     this.updateSVG();

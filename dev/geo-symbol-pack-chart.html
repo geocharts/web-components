@@ -16,12 +16,17 @@
         const jsonData = await response.json();
         document.getElementById('geo-symbol-chart').data = jsonData;
       }
+
+      window.addEventListener('geo-symbol-chart-click', (event) =>
+        console.log('geo-symbol-chart-click =', event)
+      );
     </script>
   </head>
   <body onload="onPageLoad();">
     <div style="width: 100%; height: 800px">
       <geo-symbol-pack-chart
         symbol="🦁"
+        onclickmap="onMapClick()"
         symbol-font-size="20"
         tool-tip-type="mouseover"
         lat-lng-bounds="[[49.3845, -124.7329],[24.5208, -66.947]]"
