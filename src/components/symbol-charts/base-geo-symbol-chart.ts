@@ -46,6 +46,7 @@ export abstract class BaseGeoSymbolChart extends LitElement {
     this._addMap();
     this._addSVGElements();
     this._addToolTip();
+    this.init();
   }
 
   override updated(changedProperties: Map<string, any>) {
@@ -100,7 +101,7 @@ export abstract class BaseGeoSymbolChart extends LitElement {
     });
   }
   private _updateSVG() {
-    this.updateSVG(this.data);
+    this.updateSVG();
   }
 
   private _addSVGElements() {
@@ -120,5 +121,7 @@ export abstract class BaseGeoSymbolChart extends LitElement {
     this._toolTip = tooltip();
   }
 
-  protected abstract updateSVG(data: GeoSymbolChartData[]);
+  protected abstract updateSVG();
+
+  protected init() {}
 }

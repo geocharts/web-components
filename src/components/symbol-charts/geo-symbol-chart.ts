@@ -1,7 +1,6 @@
 import {property} from 'lit/decorators.js';
 import {customElement} from 'lit/decorators.js';
 import {BaseGeoSymbolChart} from './base-geo-symbol-chart';
-import {GeoSymbolChartData} from './geo-symbol-chart-data';
 import {ToolTipType} from '../../common/tool-tip-type';
 
 @customElement('geo-symbol-chart')
@@ -15,11 +14,11 @@ export class GeoSymbolChart extends BaseGeoSymbolChart {
   @property({type: Boolean, attribute: 'show-values'})
   showValues = false;
 
-  updateSVG(data: GeoSymbolChartData[]) {
+  updateSVG() {
     const group1Elm = this.getSvgGroup1Element();
     const groups = group1Elm
       .selectAll('g')
-      .data(data)
+      .data(this.data)
       .join(
         (enter) =>
           enter
