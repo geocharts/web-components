@@ -30,7 +30,7 @@ export abstract class BaseGeoSymbolChart extends LitElement {
   @property({
     type: Array,
   })
-  data!: GeoSymbolChartData[];
+  data: GeoSymbolChartData[] = [];
 
   @query('#geo-symbol-chart')
   private _mapElement!: HTMLElement;
@@ -51,9 +51,12 @@ export abstract class BaseGeoSymbolChart extends LitElement {
 
   override updated(changedProperties: Map<string, any>) {
     super.updated(changedProperties);
-    if (changedProperties.has('data')) {
-      this._updateSVG();
+    console.log('updated', changedProperties, this.data);
+
+    if (changedProperties.has('latLngBounds')) {
+      this._geoMap.fitBounds(this.latLngBounds);
     }
+    this._updateSVG();
   }
 
   override render() {
@@ -87,13 +90,8 @@ export abstract class BaseGeoSymbolChart extends LitElement {
   private _addMap() {
     this._geoMap = map(this._mapElement, {
       attributionControl: false,
-      // zoomControl: false,
-      // scrollWheelZoom: false,
-      // dragging: false,
-      // doubleClickZoom: false,
-      // boxZoom: false,
-      // touchZoom: false,
     }).fitBounds(this.latLngBounds);
+
     tileLayer(MAP_SERVER).addTo(this._geoMap);
 
     this._geoMap.on('moveend', () => {
@@ -114,6 +112,7 @@ export abstract class BaseGeoSymbolChart extends LitElement {
       }
     });
   }
+
   private _updateSVG() {
     this.updateSVG();
   }

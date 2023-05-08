@@ -1,7 +1,7 @@
 {
   "name": "@geocharts/geo-charts",
   "private": false,
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A simple web component",
   "main": "dist/index.js",
   "module": "dist/index.js",

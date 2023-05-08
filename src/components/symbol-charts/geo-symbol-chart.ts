@@ -5,14 +5,11 @@ import {ToolTipType} from '../../common/tool-tip-type';
 
 @customElement('geo-symbol-chart')
 export class GeoSymbolChart extends BaseGeoSymbolChart {
-  @property({type: Number, attribute: 'symbol-font-size'})
-  symbolFontSize = 24;
+  @property({type: Number, attribute: 'symbol-font'})
+  symbolFont = 24;
 
-  @property({type: Number, attribute: 'value-font-size'})
-  valueFontSize = 12;
-
-  @property({type: Boolean, attribute: 'show-values'})
-  showValues = false;
+  @property({type: Number, attribute: 'text-font'})
+  textFont = 0;
 
   updateSVG() {
     const group1Elm = this.getSvgGroup1Element();
@@ -49,7 +46,7 @@ export class GeoSymbolChart extends BaseGeoSymbolChart {
             .append('text')
             .attr('class', 'symbol')
             .text((d) => d.symbol || this.symbol)
-            .style('font-size', this.symbolFontSize + 'px')
+            .style('font-size', this.symbolFont + 'px')
             .attr('pointer-events', 'visible');
           if (
             this.toolTipType === ToolTipType.mouseover ||
@@ -62,11 +59,14 @@ export class GeoSymbolChart extends BaseGeoSymbolChart {
           }
           return newSymbolElm;
         },
-        (update) => update.text((d) => d.symbol || this.symbol),
+        (update) =>
+          update
+            .style('font-size', this.symbolFont + 'px')
+            .text((d) => d.symbol || this.symbol),
         (exit) => exit.remove()
       );
 
-    if (this.showValues) {
+    if (this.textFont > 0) {
       groups
         .selectAll('text.value')
         .data((d) => [d])
@@ -75,11 +75,15 @@ export class GeoSymbolChart extends BaseGeoSymbolChart {
             enter
               .append('text')
               .attr('class', 'value')
-              .attr('dy', -this.symbolFontSize + 'px')
+              .attr('dy', -this.symbolFont + 'px')
               .text((d) => d.value || 0)
               .attr('font-weight', 600)
-              .style('font-size', this.valueFontSize + 'px'),
-          (update) => update.text((d) => d.value || 0),
+              .style('font-size', this.textFont + 'px'),
+          (update) =>
+            update
+              .attr('dy', -this.symbolFont + 'px')
+              .style('font-size', this.textFont + 'px')
+              .text((d) => d.value || 0),
           (exit) => exit.remove()
         );
     }

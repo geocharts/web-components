@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Geo Symbol Chart</title>
+    <style>
+      body {
+        height: 100%;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/lit/polyfill-support.js"></script>
+    <script
+      type="module"
+      src="../dist/components/symbol-charts/geo-symbol-chart.js"
+    ></script>
+    <script type="module" src="./geo-symbol-chart-new.js"></script>
+  </head>
+  <body>
+    <div class="accordion" id="accordion-form">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapse-form"
+            aria-expanded="true"
+            aria-controls="collapse-form"
+          >
+            Map Settings
+          </button>
+        </h2>
+        <div
+          id="collapse-form"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordion-form"
+        >
+          <div class="accordion-body">
+            <div class="row g-3">
+              <div class="col-md-12">
+                <label for="lat-lng-bounds" class="form-label"
+                  >Lat Lng Bounds</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lat-lng-bounds"
+                  value="[[79.6240562918881, -332.57812500000006],[-79.99716840285254, 332.22656250000006]]"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="symbol" class="form-label">Symbol</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="symbol"
+                  value="📍"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="tool-tip-type" class="form-label"
+                  >Tooltip Type</label
+                >
+                <select
+                  class="form-select"
+                  id="tool-tip-type"
+                  aria-label="Tooltip Type"
+                  value="mouseover"
+                >
+                  <option selected value="mouseover">mouseover</option>
+                  <option value="touchstart">touchstart</option>
+                  <option value="none">none</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="symbol-font" class="form-label">Symbol Font</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="symbol-font"
+                  value="24"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="text-font" class="form-label">Text Font</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="text-font"
+                  value="0"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapse-data-source"
+            aria-expanded="true"
+            aria-controls="collapse-data-source"
+          >
+            Data Source
+          </button>
+        </h2>
+        <div
+          id="collapse-data-source"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordion-form"
+        >
+          <div class="accordion-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Text</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Latitude</th>
+                    <th scope="col">Longitude</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry the Bird</td>
+                    <td>@twitter</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3 d-block" style="width: 100%; height: 100vh">
+      <geo-symbol-chart
+        symbol="🦁"
+        symbol-font-size="20"
+        show-values
+        tool-tip-type="mouseover"
+        lat-lng-bounds="[[49.3845, -124.7329],[24.5208, -66.947]]"
+        id="geo-symbol-chart"
+      ></geo-symbol-chart>
+    </div>
+  </body>
+</html>
