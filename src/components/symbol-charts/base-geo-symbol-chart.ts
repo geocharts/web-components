@@ -51,8 +51,6 @@ export abstract class BaseGeoSymbolChart extends LitElement {
 
   override updated(changedProperties: Map<string, any>) {
     super.updated(changedProperties);
-    console.log('updated', changedProperties, this.data);
-
     if (changedProperties.has('latLngBounds')) {
       this._geoMap.fitBounds(this.latLngBounds);
     }
